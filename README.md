@@ -5,4 +5,6 @@
 
 # kwzrd.site
 
-My personal website.
+My personal blog built with Python's [**Flask**](https://flask.palletsprojects.com), [**Gunicorn**](https://gunicorn.org/) & [**Nginx**](https://www.nginx.com/).
+
+PS: I don't know what I'm doing.
