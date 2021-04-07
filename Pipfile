@@ -17,5 +17,5 @@ python_version = "3.9"
 
 [scripts]
 development = "python -m app"
-production = "gunicorn -w 2 -b 127.0.0.1:8001 app:website"
+production = "gunicorn -w 2 -b 0.0.0.0:8001 app:website"
 lint = "python -m flake8"
