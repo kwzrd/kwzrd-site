@@ -14,6 +14,9 @@ RUN pipenv sync
 # Insert the rest of the project.
 COPY . .
 
+# Expose the port on which Gunicorn listens.
+EXPOSE 8001
+
 # Set container entrypoint ~ this defines what happens when the container starts.
 ENTRYPOINT ["pipenv"]
 CMD ["run", "production"]
