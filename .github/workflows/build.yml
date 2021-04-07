@@ -1,0 +1,35 @@
+name: Build & Push
+
+on:
+  workflow_run:
+    workflows:
+      - Checks
+    branches:
+      - main
+    types:
+      - completed
+
+jobs:
+  build:
+    name: Build & Push
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: kwzrd
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build & Push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: kwzrd/kwzrd-site
