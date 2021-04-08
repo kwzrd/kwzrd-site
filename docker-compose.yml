@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+
+  kwzrd-site:
+    image: "kwzrd/kwzrd-site:latest"
+    ports:
+      - "8001:8001"
