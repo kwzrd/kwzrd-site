@@ -24,8 +24,6 @@ services:
   # Gunicorn serving our Flask app.
   kwzrd-site:
     image: "kwzrd/kwzrd-site:latest"
-    ports:
-      - "8001:8001"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.kwzrd-site.rule=Host(`kwzrd.site`)"
