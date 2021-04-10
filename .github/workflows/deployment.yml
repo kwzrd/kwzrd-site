@@ -34,4 +34,4 @@ jobs:
           host: "${{ secrets.LINODE_HOST }}"
           username: "${{ secrets.LINODE_USERNAME }}"
           password: "${{ secrets.LINODE_PASSWORD }}"
-          script: "cd kwzrd-site && docker-compose down && docker-compose up -d"
+          script: "cd kwzrd-site && docker-compose down && docker-compose pull && docker-compose up -d"
