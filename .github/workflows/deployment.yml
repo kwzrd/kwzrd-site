@@ -1,0 +1,37 @@
+name: "Deployment"
+
+on:
+  workflow_run:
+    workflows:
+      - "Build & Push"
+    branches:
+      - "main"
+    types:
+      - "completed"
+
+jobs:
+  deploy:
+    name: "Deploy to Linode"
+    runs-on: "ubuntu-18.04"
+
+    steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v2"
+
+      - name: "Copy Compose file"
+        uses: "appleboy/scp-action@v0.1.1"
+        with:
+          host: "${{ secrets.LINODE_HOST }}"
+          username: "${{ secrets.LINODE_USERNAME }}"
+          password: "${{ secrets.LINODE_PASSWORD }}"
+          source: "docker-compose.yml"
+          target: "~/kwzrd-site/"
+          rm: false
+
+      - name: "Restart services"
+        uses: "appleboy/ssh-action@v0.1.4"
+        with:
+          host: "${{ secrets.LINODE_HOST }}"
+          username: "${{ secrets.LINODE_USERNAME }}"
+          password: "${{ secrets.LINODE_PASSWORD }}"
+          script: "cd kwzrd-site && docker-compose down && docker-compose up -d"
