@@ -5,4 +5,4 @@ website = Flask(__name__)
 
 @website.route("/")
 def index() -> str:
-    return "Flask says hello"
+    return "\U0001F49C"  # Purple heart emoji!
