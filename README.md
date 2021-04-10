@@ -6,6 +6,6 @@
 
 # kwzrd.site
 
-My personal blog built with Python's [**Flask**](https://flask.palletsprojects.com), [**Gunicorn**](https://gunicorn.org/) & [**Nginx**](https://www.nginx.com/).
+My personal website built with Python's [**Flask**](https://flask.palletsprojects.com), [**Gunicorn**](https://gunicorn.org/) & [**Traefik**](https://github.com/traefik/traefik).
 
 PS: I don't know what I'm doing.
