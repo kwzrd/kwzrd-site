@@ -11,8 +11,8 @@ WORKDIR kwzrd-site/
 COPY Pipfile* ./
 RUN pipenv sync
 
-# Insert the rest of the project.
-COPY . .
+# Insert the application.
+COPY app app
 
 # Expose the port on which Gunicorn listens.
 EXPOSE 8001
