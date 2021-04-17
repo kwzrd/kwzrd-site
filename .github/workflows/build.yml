@@ -34,3 +34,4 @@ jobs:
           context: "."
           tags: "ghcr.io/kwzrd/kwzrd-site:latest"
           push: true
+          build-args: "GIT_SHA=${{ github.sha }}"
