@@ -1,6 +1,9 @@
+import os
 import random
 
 from flask import Flask, render_template
+
+revision = os.environ.get("REVISION", "Unknown revision")
 
 hearts = [
     "\U0001F49C",  # Purple.
@@ -19,4 +22,4 @@ def get_content() -> str:
 
 @website.route("/")
 def index() -> str:
-    return render_template("base.html", content=get_content())
+    return render_template("base.html", content=get_content(), revision=revision)
