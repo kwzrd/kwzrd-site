@@ -17,6 +17,10 @@ COPY app app
 # Expose the port on which Gunicorn listens.
 EXPOSE 8001
 
+# Define build argument & store value as environment variable.
+ARG GIT_SHA="Development"
+ENV REVISION=$GIT_SHA
+
 # Set container entrypoint ~ this defines what happens when the container starts.
 ENTRYPOINT ["pipenv"]
 CMD ["run", "production"]
