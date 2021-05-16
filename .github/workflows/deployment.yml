@@ -19,6 +19,7 @@ jobs:
         uses: "actions/checkout@v2"
         with:
           repository: "kwzrd/kube-manifest"
+          ref: "main"
           token: "${{ secrets.KUBE_MANIFEST_TOKEN }}"
 
       - name: "K8s: set context"
