@@ -32,4 +32,4 @@ jobs:
         uses: "azure/k8s-deploy@v1"
         with:
           manifests: "kube-manifest/kwzrd-site/deployment.yml"
-          images: "ghcr.io/kwzrd/kwzrd-site:latest"
+          images: "ghcr.io/kwzrd/kwzrd-site:${{ github.sha }}"
