@@ -32,6 +32,8 @@ jobs:
         uses: "docker/build-push-action@v2"
         with:
           context: "."
-          tags: "ghcr.io/kwzrd/kwzrd-site:latest"
+          tags: |
+            "ghcr.io/kwzrd/kwzrd-site:latest"
+            "ghcr.io/kwzrd/kwzrd-site:${{ github.sha }}"
           push: true
           build-args: "GIT_SHA=${{ github.sha }}"
