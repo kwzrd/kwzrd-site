@@ -11,27 +11,24 @@ on:
 
 jobs:
   deploy:
-    name: "Deploy to Linode"
+    name: "Deploy to Kubernetes"
     runs-on: "ubuntu-18.04"
 
     steps:
-      - name: "Checkout"
+      - name: "Checkout Kube manifests"
         uses: "actions/checkout@v2"
-
-      - name: "Copy Compose file"
-        uses: "appleboy/scp-action@v0.1.1"
         with:
-          host: "${{ secrets.LINODE_HOST }}"
-          username: "${{ secrets.LINODE_USERNAME }}"
-          password: "${{ secrets.LINODE_PASSWORD }}"
-          source: "docker-compose.yml"
-          target: "~/kwzrd-site/"
-          rm: false
+          repository: "kwzrd/kube-manifest"
+          token: "${{ secrets.KUBE_MANIFEST_TOKEN }}"
 
-      - name: "Restart services"
-        uses: "appleboy/ssh-action@v0.1.4"
+      - name: "K8s: set context"
+        uses: "azure/k8s-set-context@v1"
         with:
-          host: "${{ secrets.LINODE_HOST }}"
-          username: "${{ secrets.LINODE_USERNAME }}"
-          password: "${{ secrets.LINODE_PASSWORD }}"
-          script: "cd kwzrd-site && docker-compose down && docker-compose pull && docker-compose up -d"
+          method: "kubeconfig"
+          kubeconfig: "${{ secrets.KUBECONFIG }}"
+
+      - name: "K8s: deploy manifest"
+        uses: "azure/k8s-deploy@v1"
+        with:
+          manifests: "kube-manifest/kwzrd-site/deployment.yml"
+          images: "ghcr.io/kwzrd/kwzrd-site:latest"
