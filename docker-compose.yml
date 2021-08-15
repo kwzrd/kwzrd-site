@@ -28,6 +28,6 @@ services:
     image: "ghcr.io/kwzrd/kwzrd-site:latest"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.kwzrd-site.rule=Host(`kwzrd.site`)"
+      - "traefik.http.routers.kwzrd-site.rule=Host(`kwzrd.info`)"
       - "traefik.http.routers.kwzrd-site.entrypoints=web-secure"
       - "traefik.http.routers.kwzrd-site.tls.certresolver=resolver"
