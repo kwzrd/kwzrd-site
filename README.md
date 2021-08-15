@@ -4,7 +4,7 @@
 ![Deployment](https://img.shields.io/github/workflow/status/kwzrd/kwzrd-site/Deployment?label=Deployment&style=flat-square)
 ![Last commit](https://img.shields.io/github/last-commit/kwzrd/kwzrd.site/main?label=Last%20commit&style=flat-square)
 
-# kwzrd.site
+# kwzrd-site
 
 My personal website built with Python's [**Flask**](https://flask.palletsprojects.com), [**Gunicorn**](https://gunicorn.org/) & [**Traefik**](https://github.com/traefik/traefik).
 
